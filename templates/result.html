@@ -1,0 +1,104 @@
+{% extends "layout2.html" %}
+
+{% block title %}
+Alpha - Book Review
+
+{% endblock %}
+
+{% block navbar %}
+<!--Navbar -->
+
+        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+          <a class="dropdown-item" href="#">My account</a>
+          <a class="dropdown-item" href="{{url_for('logout')}}">Log out</a>
+        </div>
+
+<!--/.Navbar -->
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      Search For A Book
+    </div>
+    <div class="card-body">
+      <form action="{{url_for('result')}}" method="get">
+        <div class="md-form md-outline">
+          <input type="text" class="form-control" name="isbn">
+          <label data-error="wrong" data-success="right" for="defaultForm-email2">Enter Book ISBN Number</label>
+        </div>
+        
+        <div class="md-form md-outline">
+          <input type="text" class="form-control" name="title">
+          <label data-error="wrong" data-success="right" for="defaultForm-email2">Enter Book title</label>
+        </div>
+        
+        <div class="md-form md-outline">
+          <input type="text" class="form-control" name="author">
+          <label data-error="wrong" data-success="right" for="defaultForm-email2">Enter Book Author</label>
+        </div>
+        <button type="submit" class="btn btn-primary" name="submit"><i class="fas fa-search"></i>  Search</button>
+      </form>
+    </div>
+  </div>  
+
+  <br>
+          {% with message = get_flashed_messages() %}
+          {% if message: %}
+          {% for m in message: %}
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{m}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+  <br>
+  <div class="card">
+    <div class="card-header">
+      Searched Result
+    </div>
+
+    <div class="card-body">
+      <!-- Table -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Book Id</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for book in books: %}
+          <tr>
+            <th scope="row">{{book.book_id}}</th>
+            <td>{{book.isbn}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>
+              <a href="/book/{{book.isbn}}">
+                <button type="button" class="btn btn-dark-green btn-sm m-0 py-1 px-2 mr-1">View</button>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+          
+        </tbody>
+      </table>
+      <!-- Table -->
+    </div>
+  </div>
+
+  
+</div>
+
+{% endblock %}
+

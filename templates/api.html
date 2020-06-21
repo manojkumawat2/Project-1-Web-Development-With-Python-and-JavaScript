@@ -1,0 +1,47 @@
+{% extends "layout2.html" %}
+
+{% block title %}
+Alpha - Book Review
+
+{% endblock %}
+
+{% block navbar %}
+<!--Navbar -->
+
+        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+          <a class="dropdown-item" href="#">My account</a>
+          <a class="dropdown-item" href="{{url_for('logout')}}">Log out</a>
+        </div>
+
+<!--/.Navbar -->
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container card">
+
+  <h3 class="font-weight-bold text-center mb-5">API Documentation</h3>
+  <hr>
+  <p>
+    It is very easy to use API(Application Programming Interface) our website. You can register on our website and get the required url inorder to access to api of our website. <br>
+    You can access the information of books with the help of following url with the required ISBN number of the book in JSON(Javascript Object Notation) format.<br>
+    <div class="alert alert-dark" role="alert">
+      <a href="#" class="alert-link">http://127.0.0.1:5000/api/isbn</a>
+    </div>
+    <b>JSON Format</b>
+    <div class="alert alert-success" role="alert">
+      {<br>
+        "author": "Oscar Wilde", <br>
+        "average_score": "None", <br>
+        "isbn": "0140621733", <br>
+        "review_count": 0, <br>
+        "title": "Lady Windermere's Fan", <br>
+        "year": 1893<br>
+      }
+    </div>
+  </p>
+</div>
+
+{% endblock %}
+

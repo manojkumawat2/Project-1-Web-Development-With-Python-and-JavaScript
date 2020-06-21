@@ -1,0 +1,50 @@
+{% extends "layout2.html" %}
+
+{% block title %}
+Alpha - Book Review
+
+{% endblock %}
+
+{% block navbar %}
+<!--Navbar -->
+
+        <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+          <a class="dropdown-item" href="#">My account</a>
+          <a class="dropdown-item" href="{{url_for('logout')}}">Log out</a>
+        </div>
+
+<!--/.Navbar -->
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+	<div class="card">
+		<div class="card-header">
+			Search For A Book
+		</div>
+		<div class="card-body">
+			<form action="{{url_for('result')}}" method="get">
+				<div class="md-form md-outline">
+				  <input type="text" class="form-control" name="isbn">
+				  <label data-error="wrong" data-success="right" for="defaultForm-email2">Enter Book ISBN Number</label>
+				</div>
+				
+        <div class="md-form md-outline">
+          <input type="text" class="form-control" name="title">
+          <label data-error="wrong" data-success="right" for="defaultForm-email2">Enter Book title</label>
+        </div>
+				
+        <div class="md-form md-outline">
+          <input type="text" class="form-control" name="author">
+          <label data-error="wrong" data-success="right" for="defaultForm-email2">Enter Book Author</label>
+        </div>
+        <button type="submit" class="btn btn-primary" name="submit"><i class="fas fa-search"></i>  Search</button>
+			</form>
+		</div>
+	</div>	
+</div>
+
+
+{% endblock %}

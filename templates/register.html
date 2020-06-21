@@ -1,0 +1,56 @@
+{% extends "layout1.html" %}
+
+{% block title %}
+Alpha - Book Review
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+	<!-- Card -->
+	<div class="card login">
+	<div class="card-header login-header">
+		Register
+	</div>
+	  <div class="card-body login-body">
+
+	    <form action="{{url_for('new_user')}}" method="post">
+	    <div class="md-form md-outline">
+	        <input type="text" id="1defaultForm-email1" class="form-control" name="name">
+	        <label data-error="wrong" data-success="right" for="defaultForm-email1">You Name</label>
+	      </div>
+	      <div class="md-form md-outline">
+	        <input type="email" id="1defaultForm-email1" class="form-control" name="email">
+	        <label data-error="wrong" data-success="right" for="defaultForm-email1">Your email</label>
+	      </div>
+	      <div class="md-form md-outline">
+	        <input type="password" id="1defaultForm-pass1" class="form-control" name="password">
+	        <label data-error="wrong" data-success="right" for="defaultForm-pass1">Your password</label>
+	      </div>
+
+	      <div class="d-flex justify-content-between align-items-center mb-2">
+
+	      <p><a href="">Forgot password?</a></p>
+
+	    </div>
+
+	    <div class="text-center pb-2">
+
+	      <button type="submit" name="submit" class="btn btn-primary mb-4">Sign Up</button>
+
+	      <p>Already a member? <a href="{{url_for('index')}}">Login</a></p>
+
+	    </div>
+
+	    </form>
+
+	    
+
+	  </div>
+
+	</div>
+	<!-- Card -->
+</div>
+
+{% endblock %}
